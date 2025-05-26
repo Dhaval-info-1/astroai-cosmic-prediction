@@ -171,7 +171,9 @@ const PredictionPage: React.FC = () => {
                   <PredictionSection title="Career (Astro)" content={prediction.astrology?.career} />
                   <PredictionSection title="Love & Relationships (Astro)" content={prediction.astrology?.relationships} />
                   <PredictionSection title="Spiritual & Emotional Growth (Astro)" content={prediction.astrology?.spiritual} />
-                  <PredictionSection title="Lucky Numbers, Color & Mantra (Astro)" content={prediction.astrology?.lucky} />
+                  <PredictionSection title="Lucky Numbers" content={prediction.astrology?.lucky?.numbers} />
+                  <PredictionSection title="Lucky Colors" content={prediction.astrology?.lucky?.colors} />
+                  <PredictionSection title="Spiritual Mantras" content={prediction.astrology?.lucky?.spiritualMantras} />
 
                   {/* Numerology Section */}
                   <SectionTitle title="Numerology Insights" />
