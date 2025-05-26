@@ -71,4 +71,4 @@ MIT
 
 ---
 
-> Made with ❤️ and stardust by the AstroAI team 
+> Made with ❤️ and stardust by the AstroAI team # astroai-cosmic-prediction
