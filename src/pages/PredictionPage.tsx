@@ -37,15 +37,11 @@ const PredictionPage: React.FC = () => {
           throw new Error('Prediction format is invalid');
         }
         setPrediction(result);
-        try {
-          await saveAdvancedPrediction(userData, result);
-        } catch (e) {
-          // Optionally show a warning if saving fails, but don't block the UI
+        saveAdvancedPrediction(userData, result).catch(e => {
           console.warn('Prediction generated but failed to save to Supabase:', e);
-        }
+        });
       } catch (error) {
         setError('Failed to generate prediction. Please try again.');
-        setPrediction(null);
         console.error('Error generating prediction:', error);
       } finally {
         setTimeout(() => setIsLoading(false), 3000); // Simulate loading for demo
