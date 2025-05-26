@@ -28,6 +28,14 @@ const PredictionPage: React.FC = () => {
         setIsLoading(true);
         setError(null);
         const result = await generateAstroNumPrediction(userData);
+        if (
+          !result ||
+          !result.astrology ||
+          !result.numerology ||
+          typeof result.combinedAdvice !== 'string'
+        ) {
+          throw new Error('Prediction format is invalid');
+        }
         setPrediction(result);
         try {
           await saveAdvancedPrediction(userData, result);
@@ -104,6 +112,27 @@ const PredictionPage: React.FC = () => {
         <div className="relative z-10">
           <Header />
           <LoadingAnimation />
+        </div>
+      </div>
+    );
+  }
+
+  if (!prediction && !isLoading && !error) {
+    return (
+      <div className="relative min-h-screen overflow-hidden text-white">
+        <StarryBackground />
+        <div className="relative z-10">
+          <Header />
+          <div className="container mx-auto px-4 py-20 text-center">
+            <h1 className="text-2xl font-display mb-4">No prediction available</h1>
+            <p className="mb-8">Sorry, we couldn't generate your prediction. Please try again.</p>
+            <button
+              onClick={() => navigate('/')} 
+              className="bg-purple-700 hover:bg-purple-600 transition-all px-6 py-3 rounded-full text-white font-medium"
+            >
+              Return Home
+            </button>
+          </div>
         </div>
       </div>
     );
